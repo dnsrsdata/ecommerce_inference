@@ -31,6 +31,12 @@ Como o interesse é a probabilidade de aprovação, a métrica de avaliação se
 
 ### Melhorias
 
+[⌛] Testar mais hiperparâmetros
+
+[⌛] Realizar o deploy do modelo
+
+[⌛] Criar um relatório sobre as universidades e cursos
+
 ### Instruções para execução do projeto
 
 Siga os seguintes passos para rodar o projeto localmente:
