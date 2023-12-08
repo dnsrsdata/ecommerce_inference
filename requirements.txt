@@ -9,6 +9,7 @@ certifi==2023.11.17
 charset-normalizer==3.3.2
 click==8.1.7
 cloudpickle==2.2.1
+colorlog==6.8.0
 comm==0.2.0
 contourpy==1.2.0
 cycler==0.12.1
@@ -64,6 +65,7 @@ nest-asyncio==1.5.8
 numba==0.58.1
 numpy==1.25.2
 oauthlib==3.2.2
+optuna==3.4.0
 orjson==3.9.10
 packaging==23.2
 pandas==1.5.3
@@ -82,7 +84,6 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 py4j==0.10.9.7
 pyarrow==14.0.1
-pycaret==3.2.0
 Pygments==2.17.2
 PyJWT==2.8.0
 pyod==1.1.2
