@@ -46,13 +46,115 @@
     padding-left: 80px;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
 .content {
     padding-top: 40px;
     max-width: 1000px;
-    margin: 20px;
+    margin: auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .material-icons {
     vertical-align: middle;
 }
+
+.containeranalise {
+    width: 100%;
+    height: 760px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash {
+    width: 100%;
+    height: 100%;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content strong {
+    color: #6B5B95;
+}
+
+.seletors {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.content h2 {
+    margin-top: 0 0 10px;
+    font-size: 20px;
+}
+
+input {
+    border-radius: 5px;
+    width: 100%;
+    border: 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    border: 2px solid #6B5B95;
+}
+
+.uf_selector,
+.cidade {
+    flex: 1;
+}
+
+.uf_control,
+.cidade_control,
+.instituicao_control,
+.curso_control,
+.grau_control,
+.turno_control,
+.nota_redacao_control,
+.nota_cn_control,
+.nota_ch_control,
+.nota_linguagens_control,
+.nota_matematica_control {
+    border-radius: 5px;
+    width: 100%; 
+    border: 2px solid #6B5B95;
+    padding: 10px 15px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: white;
+}
+
+.btn.btn-outline-primary {
+    border-radius: 5px;
+    width: 100%;
+    border: 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 60px;
+    background-color: white;
+    color: #6B5B95;
+    border: 2px solid #6B5B95;
+}
+
+.btn.btn-outline-primary:hover {
+    background-color: #6B5B95;
+    color: white;
+    border-color: #6B5B95;
+}
+
+
