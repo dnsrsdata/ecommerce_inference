@@ -85,8 +85,7 @@ def turnos():
         turnos_uf = cur.fetchall()
     return jsonify(turnos_uf)
 
-# Definindo as APIs para inserção
-# Buscando 
+#TODO: Buscando os dados para a análise com base na uf, cidade, instituição, curso, grau, urno selecionado e notas do aluno
 
 if __name__ == '__main__':
     app.run(debug=True)
