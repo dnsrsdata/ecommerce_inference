@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="../static/style.css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
     <title>Aprovei?!</title>
 </head>
 <body>
     <header>
         <div class="logo-menu">
-            <a class="titulo" href="./index.html">
+            <a class="titulo" href="{{ url_for('index') }}">
                 <i class="material-icons">check_box</i>
                 <strong>APROVEI</strong>
             </a>
             
             <div class="menu">
-                <a href="./analise.html">
+                <a href="{{ url_for('analise') }}">
                     <i class="material-icons">insert_chart</i>
                     <strong>ANÁLISE 2022</strong>
                 </a>
-                <a href="./predicoes.html">
+                <a href="{{ url_for('predicoes') }}">
                     <i class="material-icons">calculate</i>
                     <strong>PROBABILIDADES 2024</strong>
                 </a>
@@ -28,25 +31,280 @@
     <main>
         <div class="container">
             <div class="content">
-                <h1>Seja bem-vindo(a)!</h1>
-                <p>Este é um site para análise de dados e cálculo de 
-                    probabilidade de aprovação para cursos superiores através do
-                     SISU.</p>
-                <br>
-                     <h3>Como funciona?</h3>
-                     <p>Para utilizar o site, selecione a categoria de interesse
-                        no menu acima. Na página de <strong>análise</strong>, 
-                        você poderá selecionar o curso e a universidade de 
-                        interesse e visualizar os dados relacionados a eles. 
-                        Como os dados do SISU 2023 ainda não foram divulgados 
-                        até a data de publicação deste site, os resultados 
-                        apresentados são referentes ao SISU 2022. Na página de 
-                        <strong>predições</strong>, será necessário que você 
-                        informe as informações solicitadas para que o sistema 
-                        calcule a probabilidade de aprovação para o curso e 
-                        universidade selecionados.
-                     </p>
+                <form action="" method="post"></form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2>UF</h2>
+                            <select name="uf_name" data-live-search="true" id="uf" class="uf_control" title="Selecione a UF do Campus" required>
+                                <option value="" selected disabled>Selecione a UF da Instituição</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AM">AM</option>
+                                <option value="AP">AP</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MG">MG</option>
+                                <option value="MS">MS</option>
+                                <option value="MT">MT</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="PR">PR</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="RS">RS</option>
+                                <option value="SC">SC</option>
+                                <option value="SE">SE</option>
+                                <option value="SP">SP</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                
+                        <div class="col-md-4">
+                            <h2>Cidade</h2>
+                            <select name="cidade_name" data-live-search="true" id="cidade" class="cidade_control" title="Selecione a Cidade do Campus" required>
+                                <option>Selecione a cidade da Instituição</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>IES</h2>
+                            <select name="instituicao_name" data-live-search="true" id="instituicao" class="instituicao_control" title="Selecione a instituicao" required>
+                                <option>Selecione a Instituição</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Curso</h2>
+                            <select name="curso_name" data-live-search="true" id="curso" class="curso_control" title="Selecione o curso" required>
+                                <option>Selecione o curso</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Grau</h2>
+                            <select name="grau_name" data-live-search="true" id="grau" class="grau_control" title="Selecione o grau" required>
+                                <option>Selecione o grau</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Turno</h2>
+                            <select name="turno_name" data-live-search="true" id="turno" class="turno_control" title="Selecione o turno" required>
+                                <option>Selecione o turno</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Nota Redação: </h2>
+                            <input type="text" name="nota_redacao" id="nota_redacao" class="nota_redacao_control" placeholder="Nota" title="Nota" required>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Nota Ciências Humanas: </h2>
+                            <input type="text" name="nota_ch" id="nota_ch" class="nota_ch_control" placeholder="Nota" title="Nota" required>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Nota ciências da Natureza: </h2>
+                            <input type="text" name="nota_cn" id="nota_cn" class="nota_cn_control" placeholder="Nota" title="Nota" required>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Nota Linguagens: </h2>
+                            <input type="text" name="nota_linguagens" id="nota_linguagens" class="nota_linguagens_control" placeholder="Nota" title="Nota" required>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Nota Matemática: </h2>
+                            <input type="text" name="nota_matematica" id="nota_matematica" class="nota_matematica_control" placeholder="Nota" title="Nota" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center w-100 mt-4">
+                        <button type="button" class="btn btn-outline-primary">Calcular</button>
+                    </div>
+                </form>  
             </div>
         </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+    <script>      
+        $(document).ready(function(){
+            $('#uf').change(function(){
+                var uf = $(this).val();
+                $.ajax({
+                    url: "/cidades?uf=" + uf,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#cidade').html(options);
+                        console.log("HTML do seletor de cidades atualizado:", $('#cidade').html());
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#cidade').change(function(){
+                var cidade = $(this).val();
+                $.ajax({
+                    url: "/instituicoes?uf=" + $('#uf').val() + "&cidade=" + cidade,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#instituicao').html(options);
+                        console.log("HTML do seletor de instituicoes atualizado:", $('#instituicao').html());
+
+                        if(data.length === 1) {
+                            $('#instituicao').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#instituicao').change(function(){
+                var instituicao = $(this).val();
+                $.ajax({
+                    url: "/cursos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + instituicao,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#curso').html(options);
+                        console.log("HTML do seletor de cursos atualizado:", $('#curso').html());
+
+                        if(data.length === 1) {
+                            $('#curso').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#curso').change(function(){
+                var curso = $(this).val();
+                $.ajax({
+                    url: "/graus?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + curso,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#grau').html(options);
+                        console.log("HTML do seletor de graus atualizado:", $('#grau').html());
+
+                        if(data.length === 1) {
+                            $('#grau').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#grau').change(function(){
+                var grau = $(this).val();
+                $.ajax({
+                    url: "/turnos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val() + "&grau=" + grau,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#turno').html(options);
+                        console.log("HTML do seletor de turnos atualizado:", $('#turno').html());
+
+                        if(data.length === 1) {
+                            $('#turno').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#grau').change(function(){
+                var grau = $(this).val();
+                $.ajax({
+                    url: "/turnos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val() + "&grau=" + grau,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#turno').html(options);
+                        console.log("HTML do seletor de turnos atualizado:", $('#turno').html());
+    
+                        if(data.length === 1) {
+                            $('#turno').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
