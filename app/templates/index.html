@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="../static/style.css" media="screen" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
     <title>Aprovei?!</title>
 </head>
 <body>
     <header>
         <div class="logo-menu">
-            <a class="titulo" href="./index.html">
+            <a class="titulo" href="{{ url_for('index') }}">
                 <i class="material-icons">check_box</i>
                 <strong>APROVEI</strong>
             </a>
             
             <div class="menu">
-                <a href="./analise.html">
+                <a href="{{ url_for('analise') }}">
                     <i class="material-icons">insert_chart</i>
                     <strong>ANÁLISE 2022</strong>
                 </a>
-                <a href="./predicoes.html">
+                <a href="{{ url_for('predicoes') }}">
                     <i class="material-icons">calculate</i>
                     <strong>PROBABILIDADES 2024</strong>
                 </a>
