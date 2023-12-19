@@ -116,23 +116,23 @@
                         </div>
                         <div class="col-md-4">
                             <h2>Nota Redação: </h2>
-                            <input type="text" name="nota_redacao" id="nota_redacao" class="nota_redacao_control" placeholder="Nota" title="Nota" required>
+                            <input type="number" name="nota_redacao" id="nota_redacao" class="nota_redacao_control" placeholder="Nota" title="Nota" required>
                         </div>
                         <div class="col-md-4">
                             <h2>Nota Ciências Humanas: </h2>
-                            <input type="text" name="nota_ch" id="nota_ch" class="nota_ch_control" placeholder="Nota" title="Nota" required>
+                            <input type="number" name="nota_ch" id="nota_ch" class="nota_ch_control" placeholder="Nota" title="Nota" required>
                         </div>
                         <div class="col-md-4">
                             <h2>Nota ciências da Natureza: </h2>
-                            <input type="text" name="nota_cn" id="nota_cn" class="nota_cn_control" placeholder="Nota" title="Nota" required>
+                            <input type="number" name="nota_cn" id="nota_cn" class="nota_cn_control" placeholder="Nota" title="Nota" required>
                         </div>
                         <div class="col-md-4">
                             <h2>Nota Linguagens: </h2>
-                            <input type="text" name="nota_linguagens" id="nota_linguagens" class="nota_linguagens_control" placeholder="Nota" title="Nota" required>
+                            <input type="number" name="nota_linguagens" id="nota_linguagens" class="nota_linguagens_control" placeholder="Nota" title="Nota" required>
                         </div>
                         <div class="col-md-4">
                             <h2>Nota Matemática: </h2>
-                            <input type="text" name="nota_matematica" id="nota_matematica" class="nota_matematica_control" placeholder="Nota" title="Nota" required>
+                            <input type="number" name="nota_matematica" id="nota_matematica" class="nota_matematica_control" placeholder="Nota" title="Nota" required>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center w-100 mt-4">
@@ -361,6 +361,13 @@
                     }
                 });
             });
+        });
+    </script>
+    <script>
+        $(".nota_redacao_control, .nota_ch_control, .nota_cn_control, .nota_linguagens_control, .nota_matematica_control").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
+            }
         });
     </script>
 </body>
