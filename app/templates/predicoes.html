@@ -57,7 +57,6 @@
                                 <option value="PR">PR</option>
                                 <option value="RJ">RJ</option>
                                 <option value="RN">RN</option>
-                                <option value="RO">RO</option>
                                 <option value="RR">RR</option>
                                 <option value="RS">RS</option>
                                 <option value="SC">SC</option>
@@ -70,31 +69,31 @@
                         <div class="col-md-4">
                             <h2>Cidade</h2>
                             <select name="cidade_name" data-live-search="true" id="cidade" class="cidade_control" title="Selecione a Cidade do Campus" required>
-                                <option>Selecione a cidade da Instituição</option>
+                                <option selected disabled>Selecione a cidade da Instituição</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <h2>IES</h2>
                             <select name="instituicao_name" data-live-search="true" id="instituicao" class="instituicao_control" title="Selecione a instituicao" required>
-                                <option>Selecione a Instituição</option>
+                                <option selected disabled>Selecione a Instituição</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <h2>Curso</h2>
                             <select name="curso_name" data-live-search="true" id="curso" class="curso_control" title="Selecione o curso" required>
-                                <option>Selecione o curso</option>
+                                <option selected disabled>Selecione o curso</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <h2>Grau</h2>
                             <select name="grau_name" data-live-search="true" id="grau" class="grau_control" title="Selecione o grau" required>
-                                <option>Selecione o grau</option>
+                                <option selected disabled>Selecione o grau</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <h2>Turno</h2>
                             <select name="turno_name" data-live-search="true" id="turno" class="turno_control" title="Selecione o turno" required>
-                                <option>Selecione o turno</option>
+                                <option selected disabled>Selecione o turno</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -268,9 +267,9 @@
     <script>
         $(document).ready(function(){
             $('#grau').change(function(){
-                var grau = $(this).val();
+                var oldGrau = $(this).val();  // Armazena o valor antigo de grau
                 $.ajax({
-                    url: "/turnos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val() + "&grau=" + grau,
+                    url: "/graus?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val(),
                     method: "GET",
                     success: (data) => {
                         console.log("Dados recebidos:", data);
@@ -278,11 +277,13 @@
                         for(var i = 0; i < data.length; i++) {
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
-                        $('#turno').html(options);
-                        console.log("HTML do seletor de turnos atualizado:", $('#turno').html());
-
-                        if(data.length === 1) {
-                            $('#turno').trigger('change');
+                        $('#grau').html(options);
+                        console.log("HTML do seletor de graus atualizado:", $('#grau').html());
+        
+                        var newGrau = $('#grau').val();  // Obtém o novo valor de grau
+                        // Dispara o evento 'change' apenas se o valor de grau realmente mudou e há apenas um item de dados
+                        if(data.length === 1 && oldGrau !== newGrau) {
+                            $('#grau').trigger('change');
                         }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
@@ -298,9 +299,8 @@
     <script>
         $(document).ready(function(){
             $('#grau').change(function(){
-                var grau = $(this).val();
                 $.ajax({
-                    url: "/turnos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val() + "&grau=" + grau,
+                    url: "/turnos?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val() + "&grau=" + $('#grau').val(),
                     method: "GET",
                     success: (data) => {
                         console.log("Dados recebidos:", data);
@@ -310,7 +310,7 @@
                         }
                         $('#turno').html(options);
                         console.log("HTML do seletor de turnos atualizado:", $('#turno').html());
-    
+        
                         if(data.length === 1) {
                             $('#turno').trigger('change');
                         }
