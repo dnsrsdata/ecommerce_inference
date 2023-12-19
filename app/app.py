@@ -70,7 +70,7 @@ def graus():
     path_db = os.path.join(os.path.dirname(__file__), 'dados_to_web.db')
     with sqlite3.connect(path_db) as conn:
         cur = conn.cursor()
-        cur.execute("select grau from dados_to_predict where uf_campus = ? and municipio_campus = ? and ies = ? and nome_curso = ? group by grau having count(grau) >= 1", (uf, cidade, instituicao, curso,))
+        cur.execute("select grau from dados_to_predict where uf_campus = ? and municipio_campus = ? and ies = ? and trim(nome_curso) = ? group by grau having count(grau) >= 1", (uf, cidade, instituicao, curso,))
         graus_uf = cur.fetchall()
     return jsonify(graus_uf)
 
