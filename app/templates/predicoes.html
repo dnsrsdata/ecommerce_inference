@@ -140,7 +140,7 @@
                         <button type="button" class="btn btn-outline-primary" id="Btn">Calcular</button>
                     </div>
                 </form>
-                <div id="resultado">Valor Exibido Aqui</div>  
+                <div id="probabilidade"><p id="resultado"></p></div>  
             </div>
         </div>
     </main>
@@ -342,23 +342,16 @@
                 var nota_cn = $('#nota_cn').val();
                 var nota_linguagens = $('#nota_linguagens').val();
                 var nota_matematica = $('#nota_matematica').val();
-    
+        
                 // Faça a requisição AJAX
                 $.ajax({
                     url: "/predict?uf=" + uf + "&cidade=" + cidade + "&instituicao=" + instituicao + "&curso=" + curso + "&grau=" + grau + "&turno=" + turno + "&modalidade=" + modalidade + "&opcao=" + opcao + "&nota_redacao=" + nota_redacao + "&nota_ch=" + nota_ch + "&nota_cn=" + nota_cn + "&nota_linguagens=" + nota_linguagens + "&nota_matematica=" + nota_matematica,
                     method: "GET",
                     success: (data) => {
                         console.log("Dados recebidos:", data);
-                        var options = '';
-                        for(var i = 0; i < data.length; i++) {
-                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
-                        }
-                        $('#Btn').html(options);
-                        console.log("HTML do seletor de modalidades atualizado:", $('#Btn').html());
-    
-                        if(data.length === 1) {
-                            $('#Btn').trigger('change');
-                        }
+                        var probabilidade = data.probabilidade;
+                        $('#resultado').html('<strong>' + probabilidade + '</strong><strong>%</strong> <span style="color: black;">de chance de aprovação</span>');
+                        console.log("Texto do botão atualizado:", $('#resultado').text());
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
                         console.error("Erro na requisição AJAX:", textStatus, errorThrown);
