@@ -98,6 +98,24 @@
                             </select>
                         </div>
                         <div class="col-md-4">
+                            <h2>Modalidade</h2>
+                            <select name="modalidade_name" data-live-search="true" id="modalidade" class="modalidade_control" title="Selecione a modalidade" required>
+                                <option value="" selected disabled>Selecione a modalidade de concorrência</option>
+                                <option value="Ampla Concorrência">Ampla Concorrência</option>
+                                <option value="L">Cotas para estudantes que cursaram integralmente o ensino médio em escolas públicas</option>
+                                <option value="B">Cotas para estudantes autodeclarados pretos, pardos ou indígenas que cursaram integralmente o ensino médio em escolas públicas</option>
+                                <option value="V">Cotas para pessoas com deficiência que cursaram integralmente o ensino médio em escolas públicas.</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <h2>Opção</h2>
+                            <select name="opcao_name" data-live-search="true" id="opcao" class="opcao_control" title="Selecione a opcao" required>
+                                <option value="" selected disabled>Selecione a opcão</option>
+                                <option value="primeira">1ª</option>
+                                <option value="segunda">2ª</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <h2>Nota Redação: </h2>
                             <input type="text" name="nota_redacao" id="nota_redacao" class="nota_redacao_control" placeholder="Nota" title="Nota" required>
                         </div>
@@ -119,9 +137,10 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center w-100 mt-4">
-                        <button type="button" class="btn btn-outline-primary">Calcular</button>
+                        <button type="button" class="btn btn-outline-primary" id="Btn">Calcular</button>
                     </div>
-                </form>  
+                </form>
+                <div id="resultado">Valor Exibido Aqui</div>  
             </div>
         </div>
     </main>
@@ -294,6 +313,51 @@
     
                         if(data.length === 1) {
                             $('#turno').trigger('change');
+                        }
+                    },
+                    error: (jqXHR, textStatus, errorThrown) => {
+                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
+                    },
+                    complete: (jqXHR, textStatus) => {
+                        console.log("Requisição AJAX concluída. Status:", textStatus);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#Btn').click(function(){
+                // Obtenha os valores dos elementos que você precisa
+                var uf = $('#uf').val();
+                var cidade = $('#cidade').val();
+                var instituicao = $('#instituicao').val();
+                var curso = $('#curso').val();
+                var grau = $('#grau').val();
+                var turno = $('#turno').val();
+                var modalidade = $('#modalidade').val();
+                var opcao = $('#opcao').val();
+                var nota_redacao = $('#nota_redacao').val();
+                var nota_ch = $('#nota_ch').val();
+                var nota_cn = $('#nota_cn').val();
+                var nota_linguagens = $('#nota_linguagens').val();
+                var nota_matematica = $('#nota_matematica').val();
+    
+                // Faça a requisição AJAX
+                $.ajax({
+                    url: "/predict?uf=" + uf + "&cidade=" + cidade + "&instituicao=" + instituicao + "&curso=" + curso + "&grau=" + grau + "&turno=" + turno + "&modalidade=" + modalidade + "&opcao=" + opcao + "&nota_redacao=" + nota_redacao + "&nota_ch=" + nota_ch + "&nota_cn=" + nota_cn + "&nota_linguagens=" + nota_linguagens + "&nota_matematica=" + nota_matematica,
+                    method: "GET",
+                    success: (data) => {
+                        console.log("Dados recebidos:", data);
+                        var options = '';
+                        for(var i = 0; i < data.length; i++) {
+                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
+                        }
+                        $('#Btn').html(options);
+                        console.log("HTML do seletor de modalidades atualizado:", $('#Btn').html());
+    
+                        if(data.length === 1) {
+                            $('#Btn').trigger('change');
                         }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
