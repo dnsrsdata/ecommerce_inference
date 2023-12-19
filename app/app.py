@@ -126,6 +126,12 @@ def predict():
     else:
         tipo_modalidade = 'V'
         
+    # Buscando o tipo de opção
+    if opcao == "1ª":
+        opcao = "1"
+    else:
+        opcao = "2"
+        
     # Organizando os dados para predição
     # Dados do formulário
     dados_form = [instituicao, uf, cidade, curso, grau, turno, tipo_modalidade]
@@ -177,4 +183,4 @@ def predict():
     return jsonify({'probabilidade': probabilidade.tolist()})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
