@@ -144,9 +144,8 @@ input {
     padding: 10px 15px;
     font-size: 16px;
     font-family: Helvetica, sans-serif;
-    color: white;
     display: block;
-    margin: auto;
+
     margin-top: 60px;
     background-color: white;
     color: #6B5B95;
@@ -157,6 +156,16 @@ input {
     background-color: #6B5B95;
     color: white;
     border-color: #6B5B95;
+}
+
+#probabilidade {
+    padding-top: 50px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    color: #6B5B95;
+    font-size: 1.8em;
+    font-family:Helvetica, sans-serif;
 }
 
 
