@@ -173,4 +173,16 @@ input:focus {
     font-family:Helvetica, sans-serif;
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
 
+footer a {
+    color: #6B5B95;
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+}
