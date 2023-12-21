@@ -22,7 +22,13 @@ conjunto com um relatório sobre as universidades e cursos.
 ### Sobre os dados
 
 Os dados utilizados foram obtidos através do portal de dados abertos do governo
-federal. Os dados são referentes ao SISU 2022.1.
+federal. Os dados são referentes ao SISU 2022.1. Devido a restrição de espaço
+no github, os dados não foram adicionados ao repositório. Para baixar os dados,
+acesse o link abaixo:
+
+[Dados SISU](https://dadosabertos.mec.gov.br/images/conteudo/sisu/2022/chamada_regular_sisu_2022_1.csv)
+
+Para um bom funcionamento, crie uma pasta chamada "raw" dentro da pasta data e adicione os dados dentro dela.
 
 ### Métricas de avaliação
 
@@ -39,21 +45,15 @@ Como o interesse é a probabilidade de aprovação, a métrica de avaliação se
 
 ### Instruções para execução do projeto
 
-Siga os seguintes passos para rodar o projeto localmente:
+Para executar o projeto, é necessário que você tenha o Docker instalado na sua máquina. Estando atendendo ao requisito anterior, basta seguir os seguintes passos para rodar o projeto localmente:
 
 1. Clone o repositório:
 ```sh
 git clone https://github.com/dnsrsdata/sisu_analysis
 ```
-2. Crie um ambiente virtual:
+2. inicie os containers a partir do docker-compose
 ```sh
-python -m venv venv
-```
-3. Ative o ambiente virtual de acordo com o seu sistema operacional.
-
-4. Instale as dependências:
-```sh
-pip install -r requirements.txt
+docker-compose up --build
 ```
 
 ### Descrição dos arquivos
@@ -63,3 +63,15 @@ pip install -r requirements.txt
 
 A análise probabilística pode ser conferida no pdf ```SISU com Dados.pdf``` na pasta
 relatorio.
+
+Como resultado do modelo, foi obtido uma log loss de 0.23. A respeito da sua
+implantação, foi criado toda ma aplicação web para suportar, além do modelo, um
+dashboard com informações sobre as aplicações. Confira abaixo prints da
+aplicação:
+
+![tela inicial](images/tela_inicial_app.png)
+![tela dash](images/tela_dash_app.png)
+![tela preditor](images/tela_preditor_app.png)
+
+Para uma melhor visualização do dashboard, confira a imagem abaixo:
+![dashboard](images/dash_completo.png)
