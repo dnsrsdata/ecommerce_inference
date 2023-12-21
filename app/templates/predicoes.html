@@ -162,6 +162,7 @@
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
                         $('#cidade').html(options);
+                        $('#cidade').prop('selectedIndex', 0).trigger('change');
                         console.log("HTML do seletor de cidades atualizado:", $('#cidade').html());
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
@@ -188,11 +189,8 @@
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
                         $('#instituicao').html(options);
+                        $('#instituicao').prop('selectedIndex', 0).trigger('change');
                         console.log("HTML do seletor de instituicoes atualizado:", $('#instituicao').html());
-
-                        if(data.length === 1) {
-                            $('#instituicao').trigger('change');
-                        }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
                         console.error("Erro na requisição AJAX:", textStatus, errorThrown);
@@ -218,11 +216,8 @@
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
                         $('#curso').html(options);
+                        $('#curso').prop('selectedIndex', 0).trigger('change');
                         console.log("HTML do seletor de cursos atualizado:", $('#curso').html());
-
-                        if(data.length === 1) {
-                            $('#curso').trigger('change');
-                        }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
                         console.error("Erro na requisição AJAX:", textStatus, errorThrown);
@@ -248,43 +243,8 @@
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
                         $('#grau').html(options);
+                        $('#grau').prop('selectedIndex', 0).trigger('change');
                         console.log("HTML do seletor de graus atualizado:", $('#grau').html());
-
-                        if(data.length === 1) {
-                            $('#grau').trigger('change');
-                        }
-                    },
-                    error: (jqXHR, textStatus, errorThrown) => {
-                        console.error("Erro na requisição AJAX:", textStatus, errorThrown);
-                    },
-                    complete: (jqXHR, textStatus) => {
-                        console.log("Requisição AJAX concluída. Status:", textStatus);
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function(){
-            $('#grau').change(function(){
-                var oldGrau = $(this).val();  // Armazena o valor antigo de grau
-                $.ajax({
-                    url: "/graus?uf=" + $('#uf').val() + "&cidade=" + $('#cidade').val() + "&instituicao=" + $('#instituicao').val() + "&curso=" + $('#curso').val(),
-                    method: "GET",
-                    success: (data) => {
-                        console.log("Dados recebidos:", data);
-                        var options = '';
-                        for(var i = 0; i < data.length; i++) {
-                            options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
-                        }
-                        $('#grau').html(options);
-                        console.log("HTML do seletor de graus atualizado:", $('#grau').html());
-        
-                        var newGrau = $('#grau').val();  // Obtém o novo valor de grau
-                        // Dispara o evento 'change' apenas se o valor de grau realmente mudou e há apenas um item de dados
-                        if(data.length === 1 && oldGrau !== newGrau) {
-                            $('#grau').trigger('change');
-                        }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
                         console.error("Erro na requisição AJAX:", textStatus, errorThrown);
@@ -309,11 +269,8 @@
                             options += '<option value="' + data[i][0] + '">' + data[i][0] + '</option>';
                         }
                         $('#turno').html(options);
+                        $('#turno').prop('selectedIndex', 0).trigger('change');
                         console.log("HTML do seletor de turnos atualizado:", $('#turno').html());
-        
-                        if(data.length === 1) {
-                            $('#turno').trigger('change');
-                        }
                     },
                     error: (jqXHR, textStatus, errorThrown) => {
                         console.error("Erro na requisição AJAX:", textStatus, errorThrown);
