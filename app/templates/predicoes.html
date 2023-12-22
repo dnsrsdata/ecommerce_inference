@@ -285,7 +285,6 @@
     <script>
         $(document).ready(function(){
             $('#Btn').click(function(){
-                // Obtenha os valores dos elementos que você precisa
                 var uf = $('#uf').val();
                 var cidade = $('#cidade').val();
                 var instituicao = $('#instituicao').val();
@@ -300,7 +299,6 @@
                 var nota_linguagens = $('#nota_linguagens').val();
                 var nota_matematica = $('#nota_matematica').val();
         
-                // Faça a requisição AJAX
                 $.ajax({
                     url: "/predict?uf=" + uf + "&cidade=" + cidade + "&instituicao=" + instituicao + "&curso=" + curso + "&grau=" + grau + "&turno=" + turno + "&modalidade=" + modalidade + "&opcao=" + opcao + "&nota_redacao=" + nota_redacao + "&nota_ch=" + nota_ch + "&nota_cn=" + nota_cn + "&nota_linguagens=" + nota_linguagens + "&nota_matematica=" + nota_matematica,
                     method: "GET",
