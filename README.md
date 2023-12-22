@@ -39,9 +39,11 @@ Como o interesse é a probabilidade de aprovação, a métrica de avaliação se
 
 [⌛] Testar mais hiperparâmetros
 
-[⌛] Realizar o deploy do modelo
+[✅] Realizar o deploy do modelo
 
-[⌛] Criar um relatório sobre as universidades e cursos
+[✅] Criar um relatório sobre as universidades e cursos
+
+[⌛] Criar uma camada de monitoramento
 
 ### Instruções para execução do projeto
 
