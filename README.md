@@ -60,6 +60,49 @@ docker-compose up --build
 
 ### Descrição dos arquivos
 
+    - app
+    |- static
+    | |- style.css  # CSS contendo o estilo da aplicação
+    |- templates
+    | |- analise.html  # HTML contendo a estruturação da página de análise
+    | |- index.html  # HTML contendo a estruturação da página inicial
+    | |- predicoes.html  # HTML contendo a estruturação da página de predição
+    |- app.py  # Arquivo contendo a aplicação web
+    |- dados_to_web.db  # Databse contendo os dados para o dashboard
+    |- Dockerfile  # Arquivo contendo as instruções para a criação da imagem do Metabase
+    |
+    - data
+    |- processed
+    | |- dados_transformados.parquet  # Dados obtidos após a transformação
+    | |- dados_to_web.db  # Dados que serão consumidos pelo app
+    |- raw
+    | |- chamada_regular_sisu_2022_1.csv  # Dados brutos obtidos do portal de dados abertos do MEC
+    |
+    - images
+    |- dash_completo.png  # Imagem contendo o dashboard completo
+    |- tela_dash_app.png  # Imagem contendo a tela do dashboard na aplicação
+    |- tela_inicial_app.png  # Imagem contendo a tela inicial da aplicação
+    |- tela_preditor_app.png  # Imagem contendo a tela do preditor na aplicação
+    |
+    - models
+    |- best_lr.pkl  # Modelo treinado
+    |
+    - notebooks
+    |- data_preparation.ipynb  # Notebook contendo a preparação dos dados
+    |- models.experimentation.ipynb  # Notebook contendo a experimentação dos modelos
+    |- Probabilidades_SISU.ipynb  # Notebook contendo a análise probabilística
+    |
+    - relatorio
+    |- SISU com Dados.pdf  # Relatório contendo os resultados da análise probabilística
+    |
+    - .dockerignore  # Arquivo contendo as folders para o docker ignorar
+    - .gitattributes  # Arquivo contendo as configurações do git lfs
+    - .gitignore  # Arquivo contendo as folders para o git ignorar
+    - dados_to_web.db  # Cópia do database gerado pelo Metabase
+    - docker-compose.yml  # Arquivo contendo as configurações do docker-compose
+    - Dockerfile  # Arquivo contendo as instruções para a criação da imagem do app
+    - README.md  # Arquivo contando informações do projeto
+    - requirements.txt # Arquivo contendo as dependências do projeto
 
 ### Resultados
 
