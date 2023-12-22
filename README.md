@@ -23,7 +23,7 @@ conjunto com um relatório sobre as universidades e cursos.
 
 Os dados utilizados foram obtidos através do portal de dados abertos do governo
 federal. Os dados são referentes ao SISU 2022.1. Devido a restrição de espaço
-no github, os dados não foram adicionados ao repositório. Para baixar os dados,
+no github, os dados não foram adicionados ao repositório. Para baixá-los,
 acesse o link abaixo:
 
 [Dados SISU](https://dadosabertos.mec.gov.br/images/conteudo/sisu/2022/chamada_regular_sisu_2022_1.csv)
