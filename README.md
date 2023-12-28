@@ -80,6 +80,7 @@ docker-compose up --build
     |
     - images
     |- dash_completo.png  # Imagem contendo o dashboard completo
+    |- diagrama_implantacao.png  # Imagem contendo o diagrama de implantação
     |- tela_dash_app.png  # Imagem contendo a tela do dashboard na aplicação
     |- tela_inicial_app.png  # Imagem contendo a tela inicial da aplicação
     |- tela_preditor_app.png  # Imagem contendo a tela do preditor na aplicação
@@ -117,6 +118,10 @@ aplicação:
 ![tela inicial](images/tela_inicial_app.png)
 ![tela dash](images/tela_dash_app.png)
 ![tela preditor](images/tela_preditor_app.png)
+
+Para a implantação, foi utilizado a AWS. O modelo foi implantado conforme 
+o diagrama abaixo:
+![diagrama](images/diagrama_implantacao.png)
 
 Para uma melhor visualização do dashboard, confira a imagem abaixo:
 ![dashboard](images/dash_completo.png)
