@@ -119,9 +119,9 @@ aplicação:
 ![tela dash](images/tela_dash_app.png)
 ![tela preditor](images/tela_preditor_app.png)
 
-Para a implantação, foi utilizado a AWS. O modelo foi implantado conforme 
-o diagrama abaixo:
-![diagrama](images/diagrama_implantacao.png)
-
 Para uma melhor visualização do dashboard, confira a imagem abaixo:
 ![dashboard](images/dash_completo.png)
+
+Para a implantação do dashboard em conjunto da aplicação, foi utilizado a AWS.
+A implantação foi realizada conforme o diagrama abaixo:
+![diagrama](images/diagrama_implantacao.png)
