@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+    ports:
+      - "5000:5000"
+    depends_on:
+      - metabase
+
+  metabase:
+    build:
+      context: ./app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./metabase/data:/metabase-data
